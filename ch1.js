@@ -91,7 +91,7 @@ const stringCompress = (str) => {
 };
 // O(N) time with extra space for new string
 
-const matrix3 = [['a', 'b', 'c'], ['d', 'e', 'f'], ['g', 'h', 'i']];
+const matrix3 = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
 const matrix4 = [['a', 'b', 'c', 'd'], ['e', 'f', 'g', 'h'], ['i', 'j', 'k', 'l'], ['m', 'n', 'o', 'p']];
 
 const rotateMatrix = (matrix) => {
@@ -106,7 +106,7 @@ const rotateMatrix = (matrix) => {
   }
   return newMatrix;
 }
-console.log(rotateMatrix(matrix4));
+// O (N**2) time with extra space for new matrix
 
 const rotateMatrixInPlace = (matrix) => {
   for (let layer = 0; layer < matrix.length / 2; layer++) {
@@ -134,3 +134,39 @@ const rotateMatrixInPlace = (matrix) => {
   }
   return matrix;
 };
+// O (N**2) time with no extra space
+
+const matrix0 = [[0, 2, 3], [4, 5, 6], [7, 8, 0]];
+
+const zeroMatrix = (matrix) => {
+  let zeroRow = [];
+  let zeroCol = [];
+  for (let row = 0; row < matrix.length; row++) {
+    for (let col = 0; col < matrix.length; col++) {
+      if (matrix[row][col] === 0) {
+        zeroRow.push(row);
+        zeroCol.push(col);
+      }
+    }
+  }
+  zeroRow.forEach(row => {
+    matrix[row] = matrix[row].map(val => 0);
+  });
+  zeroCol.forEach(col => {
+    matrix.forEach(row => row[col] = 0);
+  });
+  return matrix;
+};
+// O (N**2) time with extra space to log zero rows and cols
+
+const isRotatedString = (str1, str2) => {
+  if (str1.length === str2.length) {
+    for (let i = 0; i < str1.length; i++) {
+      if ((str2.slice(i) + str2.slice(0, i)) === str1) {
+        return true;
+      }
+    }
+  }
+  return false;
+};
+// O (N) time with no extra space
