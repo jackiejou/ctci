@@ -10,7 +10,7 @@ const generateParens = (n) => {
   addParen(n, n, '');
   return results;
 };
-console.log(generateParens(4));
+// O (N) time with space for array
 
 const coinSums = (n, denoms) => {
   // create array of zeroes from zero to n
@@ -25,5 +25,4 @@ const coinSums = (n, denoms) => {
   });
   return results[n];
 }
-
-// console.log(coinSums(30, [1, 5, 10, 25]));
+// O (N) time with extra space for array
