@@ -60,16 +60,33 @@ const partition = (node, val) => {
 };
 // O (N) time with no extra space
 
-let root = new LinkedList(10);
-let n2 = new LinkedList(2);
-root.next = n2;
-let n3 = new LinkedList(3)
-n2.next = n3;
-let n4 = new LinkedList(41)
-n3.next = n4;
-let n5 = new LinkedList(5)
-n4.next = n5;
-let n6 = new LinkedList(4)
-n5.next = n6;
+const sumLinkedList = (node1, node2) => {
+  if (!node1 && !node2) return null;
+  if (!node1) return node2;
+  if (!node2) return node1;
+  let result, current;
+  let carry = 0;
+  while (node1 || node2) {
+    let val1 = node1 ? node1.val : 0;
+    let val2 = node2 ? node2.val : 0;
+    let sum = val1 + val2 + carry;
+    carry = 0;
+    if (sum > 9) {
+      carry = Math.floor(sum / 10);
+      sum = sum % 10;
+    }
+    let newNode = new LinkedList(sum);
+    current ? current.next = newNode : result = newNode;
+    current = newNode;
+    node1 = node1 ? node1.next : null;
+    node2 = node2 ? node2.next : null;
+  }
+  if (carry) {
+    current.next = new LinkedList(carry);
+  }
+  return result;
+};
 
-console.log(partition(root, 5));
+module.exports = {
+  sumLinkedList,
+}
