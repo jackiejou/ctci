@@ -88,5 +88,9 @@ const sumLinkedList = (node1, node2) => {
 };
 
 module.exports = {
+  removeDupes,
+  kthToLast,
+  removeGivenNode,
+  partition,
   sumLinkedList,
 }
